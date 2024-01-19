@@ -7,7 +7,7 @@ const userRouter = require("./router/userRouter.js");
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.send('Ini Landing Page!')
+    res.send('Welcome to BingleShop Landing Page!')
 });
 
 app.use("/users", userRouter);
