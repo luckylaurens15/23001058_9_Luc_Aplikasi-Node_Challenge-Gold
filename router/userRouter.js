@@ -8,5 +8,10 @@ userRouter
     .get(UserController.loginPage)
     .post(UserController.loginUser);
 
+userRouter
+    .route("/signup")
+    .get(UserController.signupPage)
+    .post(UserController.signupUser);
+
 
 module.exports = userRouter;
