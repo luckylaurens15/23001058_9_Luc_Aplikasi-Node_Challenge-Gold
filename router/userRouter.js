@@ -1,12 +1,17 @@
 const express = require("express");
 const userRouter = express.Router();
 
-const {loginPage, loginUser} = require("../controllers/userController.js");
+const {UserController} = require("../controllers/userController.js");
 
 userRouter
     .route("/login")
-    .get(loginPage)
-    .post(loginUser);
+    .get(UserController.loginPage)
+    .post(UserController.loginUser);
+
+userRouter
+    .route("/signup")
+    .get(UserController.signupPage)
+    .post(UserController.signupUser);
 
 
 module.exports = userRouter;

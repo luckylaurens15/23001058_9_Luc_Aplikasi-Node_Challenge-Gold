@@ -25,7 +25,7 @@ module.exports = {
           },
           {
             full_name: "Rizki Putra Awali",
-            email: "rizkiputrawawali@gmail.com",
+            email: "rizkiputraawali@gmail.com",
             phone_number : "08221231231",
             password : "password",
             date_of_birth : "1988-01-01"
