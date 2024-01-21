@@ -1,8 +1,9 @@
 const {User} = require(`../models`);
+const { formatResponse } = require("../helpers/formatResponse");
 
 class UserController {
     static loginPage(req, res) {
-        res.send("Ini login page");
+        res.status(200).json(formatResponse(null, "Ini login page"));
     }
     
     static async loginUser(req, res) {
@@ -14,19 +15,19 @@ class UserController {
         try {
             const auth = await User.findOne({ where: { email: reqUser.email , password: reqUser.password} });
             if(auth == null){
-                res.send(`User with email ${reqUser.email} is not found or the password is incorect.`);
+                res.status(401).json(formatResponse(reqUser.email, `User with email ${reqUser.email} is not found or the password is incorect.`));
             }
             else {
-                res.send(`Hi ${auth.full_name}, Welcome Back to BingleShop!`);
+                res.status(200).json(formatResponse(auth, `Hi ${auth.full_name}, Welcome Back to BingleShop!`));
             }
         }
         catch(err) {
-            res.send(err);
+            res.status(400).json(formatResponse(req.body, 'Failed to Authenticate due to Bad Request'));
         }
     }
 
     static signupPage(req, res) {
-        res.send("Ini signup page");
+        res.status(200).json(formatResponse(null, "Ini signup page"));
     }
 
     static async signupUser(req, res) {
@@ -38,10 +39,10 @@ class UserController {
                 date_of_birth: req.body.dob,
                 password: req.body.password,
             });
-            res.send(`Hi ${newUser.full_name}, Welcome to BingleShop!`);
+            res.status(200).json(formatResponse(newUser, `Hi ${newUser.full_name}, Welcome to BingleShop!`));
         }
         catch(err) {
-            res.send(err);
+            res.status(400).json(formatResponse(req.body, err));
         }
     }
 }
