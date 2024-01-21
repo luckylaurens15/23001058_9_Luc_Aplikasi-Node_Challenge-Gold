@@ -14,7 +14,7 @@ userRouter
     .post(UserController.signupUser);
 
 userRouter
-    .route("/edit")
+    .route("/edit/:id")
     .get(UserController.editUserPage)
     .put(UserController.editUser);
 
