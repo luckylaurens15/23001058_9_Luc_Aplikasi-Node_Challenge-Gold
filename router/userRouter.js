@@ -13,5 +13,10 @@ userRouter
     .get(UserController.signupPage)
     .post(UserController.signupUser);
 
+userRouter
+    .route("/edit")
+    .get(UserController.editUserPage)
+    .put(UserController.editUser);
+
 
 module.exports = userRouter;
