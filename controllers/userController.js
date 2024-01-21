@@ -54,24 +54,29 @@ class UserController {
     static async editUser(req, res) {
         try {
             const theUser = await User.findByPk(req.params.id);
-            if (req.body.full_name != null){
-                theUser.full_name = req.body.full_name;
+            if (theUser == null){
+                res.status(400).json(formatResponse(req.params, `Cannot find any user with id ${req.params.id}`));
             }
-            if (req.body.email != null){
-                theUser.email = req.body.email;
+            else{
+                if (req.body.full_name != null){
+                    theUser.full_name = req.body.full_name;
+                }
+                if (req.body.email != null){
+                    theUser.email = req.body.email;
+                }
+                if (req.body.phone_number != null){
+                    theUser.phone_number = req.body.phone_number;
+                }
+                if (req.body.date_of_birth != null){
+                    theUser.date_of_birth = req.body.date_of_birth;
+                }
+                if (req.body.password != null){
+                    theUser.password = req.body.password;
+                }
+                theUser.updatedAt = new Date();
+                theUser.save();
+                res.status(200).json(formatResponse(theUser, `Successfully Updated User ${theUser.full_name} with id ${theUser.id}!`));
             }
-            if (req.body.phone_number != null){
-                theUser.phone_number = req.body.phone_number;
-            }
-            if (req.body.date_of_birth != null){
-                theUser.date_of_birth = req.body.date_of_birth;
-            }
-            if (req.body.password != null){
-                theUser.password = req.body.password;
-            }
-            theUser.updatedAt = new Date();
-            theUser.save();
-            res.status(200).json(formatResponse(theUser, `Successfully Updated User ${theUser.full_name} with id ${theUser.id}!`));
         }
         catch(err) {
             res.status(400).json(formatResponse(req.body, err));
