@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
 
       Item.hasMany(models.Order, {
-        foreignKey: item_id,
-        sourceKey: id,
+        foreignKey: "item_id",
+        sourceKey: "id",
       });
     }
   }
