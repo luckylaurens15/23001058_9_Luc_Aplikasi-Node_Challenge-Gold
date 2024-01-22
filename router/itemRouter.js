@@ -19,7 +19,7 @@ itemRouter
 itemRouter
     .route("/update/:id")
     .get(ItemController.updateItemPage)
-    .post(ItemController.updateItem);
+    .put(ItemController.updateItem);
 
 itemRouter
     .route("/delete/:id")
