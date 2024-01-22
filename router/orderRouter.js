@@ -1,11 +1,10 @@
 const express = require("express");
 const orderRouter = express.Router();
 
-const {OrderController} = require("../controllers/orderController.js");
+const {OrderController} = require("../controllers/orderController");
 
 orderRouter
-    .route("/")
-    .get(OrderController.getAllItem);
+    .route("/");
 
 
 module.exports = orderRouter;

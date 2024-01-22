@@ -1,7 +1,7 @@
 const express = require("express");
 const itemRouter = express.Router();
 
-const {ItemController} = require("../controllers/itemController.js");
+const {ItemController} = require("../controllers/itemController");
 
 itemRouter
     .route("/")
