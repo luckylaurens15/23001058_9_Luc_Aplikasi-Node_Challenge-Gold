@@ -1,7 +1,7 @@
 const express = require("express");
 const itemRouter = express.Router();
 
-const {ItemController} = require("../controllers/itemController.js");
+const {ItemController} = require("../controllers/itemController");
 
 itemRouter
     .route("/")
@@ -19,7 +19,7 @@ itemRouter
 itemRouter
     .route("/update/:id")
     .get(ItemController.updateItemPage)
-    .post(ItemController.updateItem);
+    .put(ItemController.updateItem);
 
 itemRouter
     .route("/delete/:id")
