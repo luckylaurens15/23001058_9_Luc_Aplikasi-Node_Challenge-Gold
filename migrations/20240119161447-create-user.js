@@ -9,6 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      //Note: Penamaan kolom perlu dibuat konsisten. Kolom full_name menggunakan snake_case tetapi createdAt dan updatedAt menggunakan camelCase. Silahkan pilih salah satu saja. Note ini berlaku untuk table lain
       full_name: {
         type: Sequelize.STRING,
         allowNull: false

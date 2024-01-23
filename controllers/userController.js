@@ -32,6 +32,7 @@ class UserController {
 
     static async signupUser(req, res) {
         try {
+            //Note: Cukup berbahaya menyimpan password user mentah mentah tanpa enkripsi. Bisa gunakan library brcyptjs untuk melakukan enkripsi password lalu simpan hasil enkripsinya 
             const newUser = await User.create({
                 full_name: req.body.full_name,
                 email: req.body.email,

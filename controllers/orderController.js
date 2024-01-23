@@ -7,7 +7,7 @@ class OrderController {
             const orders = await Order.findAll({include: ['User', 'Item']});
             if(orders == null){
                 res.status(404).json(formatResponse(null, `Cannot find any orders`));
-            }
+            } //Note: Bisa dirapihkan if elsenya
             else {
                 res.status(200).json(formatResponse(orders, `Successfully get ${orders.length} orders.`));
             }
@@ -64,7 +64,8 @@ class OrderController {
             if (item.stock < req.body.qty){
                 res.status(400).json(formatResponse(req.body, `Cannot make an order due to not enough stock. Stock = ${item.stock}, while required items = ${req.body.qty}!`));
             }
-            else{
+            else {
+                //Note: Karena ada proses create di table order dan update di table item. Maka gunakan transaction, silahkan baca dokumentasi sequelize
                 const newOrder = await Order.create({
                     user_id: req.body.user_id,
                     item_id: req.body.item_id,

@@ -12,7 +12,8 @@ class ItemController {
                 res.status(200).json(formatResponse(items, `Successfully get ${items.length} items.`));
             }
         }
-        catch(err) {
+        catch (err) {
+            //Note: Pada dasarnya perlu mapping atau validasi lebih untuk menentukan sebuah error apakah memiliki status code tertentu seperti 400 atau 500. Bisa dipertimbangkan untuk melakukan mapping status code untuk error error yang mungkin terjadi. Note ini berlaku untuk endpoint lain
             res.status(400).json(formatResponse(null, err));
         }
     }
@@ -111,9 +112,11 @@ class ItemController {
             const theItem = await Item.findByPk(req.params.id);
             if (theItem == null){
                 res.status(404).json(formatResponse(req.params, `Item with id ${req.params.id} is not found!`));
-            }
+            } //Note: Penulis if elsenya bisa dibuat lebih rapih lagi
             else{
                 let IDTemp = theItem.id;
+
+                //Note: Tidak pakai await?
                 theItem.destroy();
                 res.status(200).json(formatResponse(req.params.id, `Successfully Deleted Item With ID : ${IDTemp}`));
             }
