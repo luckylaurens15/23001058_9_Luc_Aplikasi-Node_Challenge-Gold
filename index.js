@@ -8,6 +8,10 @@ const orderRouter = require("./router/orderRouter");
 
 app.use(express.json()); // for reading body request in json format
 
+// for views ejs
+app.set("view engine", "ejs");
+app.use(express.urlencoded({extended: false/true}));
+
 app.get("/", (req, res) => {
     res.send('Welcome to BingleShop Landing Page!')
 });

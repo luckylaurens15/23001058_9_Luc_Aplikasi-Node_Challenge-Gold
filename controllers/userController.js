@@ -3,7 +3,8 @@ const { formatResponse } = require("../helpers/formatResponse");
 
 class UserController {
     static loginPage(req, res) {
-        res.status(200).json(formatResponse(null, "This is login page."));
+        let welcomeMessage = "Welcome Back!";
+        res.status(200).render('loginPage', {welcomeMessage});
     }
     
     static async loginUser(req, res) {
