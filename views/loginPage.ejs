@@ -7,5 +7,10 @@
 </head>
 <body>
     <h1><%= welcomeMessage %></h1>
+    <form action="/users/login" method="post">
+        <input type="email" name="email" id="email" placeholder="input your email"><br>
+        <input type="password" name="password" id="password" placeholder="input your password"><br>
+        <button type="submit">Login</button>
+    </form>
 </body>
 </html>
